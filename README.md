@@ -14,7 +14,7 @@
 1. Intel i7
 2. RAM 16GB
 3. NVIDIA 1050 GTX
-4. Ubuntu 16.04
+4. Ubuntu 20.04
 
 ### NVIDIA GPU Installation
 
@@ -116,3 +116,6 @@ coreClock: 1.493GHz coreCount: 5 deviceMemorySize: 3.95GiB deviceMemoryBandwidth
 2021-07-10 20:56:57.365533: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
+
+## Reference
+[Tensorflow-GPU](https://www.tensorflow.org/install/gpu#linux_setup)
