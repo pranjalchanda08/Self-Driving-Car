@@ -1,4 +1,4 @@
-# Self-Driving-Car
+# Self Driving Car
 
 ## Library dependency
 
@@ -11,7 +11,7 @@
 
 ### System Info
 
-1. Intel i7
+1. CPU Intel i7
 2. RAM 16GB
 3. NVIDIA 1050 GTX
 4. Ubuntu 20.04
@@ -46,7 +46,7 @@ $ nvidia-smi
 ```
 
 ```shell
-# Output Ecample of nvidia-smi
+# Output Example of nvidia-smi
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 470.42.01    Driver Version: 470.42.01    CUDA Version: 11.0     |
 |-------------------------------+----------------------+----------------------+
@@ -85,8 +85,8 @@ $ cd /usr/local/cuda/lib64; sudo ln -s $(pwd)/libcusolver.so.10  $(pwd)/libcusol
 ```shell
 # Set LD_LIBRARY_PATH
 $ export LD_LIBRARY=$(pwd)
-# Follow https://stackoverflow.com/questions/33812902/pycharm-cannot-find-library for pycharm setup 
 ```
+Pycharm LD_LIBRARY Setup [Stackoverflow #33812902](https://stackoverflow.com/questions/33812902/pycharm-cannot-find-library)
 
 ### Tensorflow Installation
 
