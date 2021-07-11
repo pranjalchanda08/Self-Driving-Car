@@ -1,6 +1,8 @@
 try:
     import pandas as pd
-    # import numpy as np
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from sklearn.utils import shuffle
     import os
 except ModuleNotFoundError:
     import sys
@@ -16,4 +18,43 @@ def import_data_info(path: str = '.',
     columns = ['Center', 'Left', 'Right', 'Steering', 'Throttle', 'Brake', 'Speed']
     data = pd.read_csv(os.path.join(path, csv_file), names=columns)
     data['Center'] = data['Center'].apply(get_file_name)
+    return data
+
+
+def get_balance_data(data,
+                     display: bool = True):
+    n_bins = 31
+    # Bin Cutoff value
+    n_samples = 1000
+    hist, bins = np.histogram(data['Steering'], n_bins)
+    if display:
+        center = (bins[:-1] + bins[1:]) * 0.5
+        x_range = (n_samples, n_samples)
+        y_range = (-1, 1)
+        plt.bar(center, hist, width=0.06)
+        plt.plot(y_range, x_range)
+        plt.show()
+
+    removed_data_list = []
+    for j in range(n_bins):
+        bin_data_list = []
+        for i, angle in enumerate(data['Steering']):
+            if bins[j] <= angle <= bins[j + 1]:
+                bin_data_list.append(i)
+        bin_data_list = shuffle(bin_data_list)
+        # Split random samples according to cut off value
+        bin_data_list = bin_data_list[n_samples:]
+        removed_data_list.extend(bin_data_list)
+    print('Removed data len: ', len(removed_data_list))
+    data.drop(data.index(removed_data_list), inplace=True)
+    print('Remaining data len: ', len(data))
+    if display:
+        hist, _ = np.histogram(data['Steering'], n_bins)
+        center = (bins[:-1] + bins[1:]) * 0.5
+        x_range = (n_samples, n_samples)
+        y_range = (-1, 1)
+        plt.bar(center, hist, width=0.06)
+        plt.plot(y_range, x_range)
+        plt.show()
+
     return data
