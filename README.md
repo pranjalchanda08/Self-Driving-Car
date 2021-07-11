@@ -86,7 +86,9 @@ $ cd /usr/local/cuda/lib64; sudo ln -s $(pwd)/libcusolver.so.10  $(pwd)/libcusol
 # Set LD_LIBRARY_PATH
 $ export LD_LIBRARY=$(pwd)
 ```
-Pycharm LD_LIBRARY Setup [Stackoverflow #33812902](https://stackoverflow.com/questions/33812902/pycharm-cannot-find-library)
+
+Pycharm LD_LIBRARY
+Setup [Stackoverflow #33812902](https://stackoverflow.com/questions/33812902/pycharm-cannot-find-library)
 
 ### Tensorflow Installation
 
@@ -118,4 +120,5 @@ coreClock: 1.493GHz coreCount: 5 deviceMemorySize: 3.95GiB deviceMemoryBandwidth
 ```
 
 ## Reference
+
 [Tensorflow-GPU](https://www.tensorflow.org/install/gpu#linux_setup)

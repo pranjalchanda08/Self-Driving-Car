@@ -1,12 +1,17 @@
 try:
     import pandas as pd
     import numpy as np
+    import matplotlib
+
+    matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     from sklearn.utils import shuffle
     import os
 except ModuleNotFoundError:
     import sys
+
     print('Module Import error. Check installation')
+    sys.exit(-1)
 
 
 def get_file_name(path: str = '.'):
@@ -46,7 +51,7 @@ def get_balance_data(data,
         bin_data_list = bin_data_list[n_samples:]
         removed_data_list.extend(bin_data_list)
     print('Removed data len: ', len(removed_data_list))
-    data.drop(data.index(removed_data_list), inplace=True)
+    data.drop(data.index[removed_data_list], inplace=True)
     print('Remaining data len: ', len(data))
     if display:
         hist, _ = np.histogram(data['Steering'], n_bins)
