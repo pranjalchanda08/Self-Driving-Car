@@ -23,6 +23,8 @@ def import_data_info(path: str = '.',
     columns = ['Center', 'Left', 'Right', 'Steering', 'Throttle', 'Brake', 'Speed']
     data = pd.read_csv(os.path.join(path, csv_file), names=columns)
     data['Center'] = data['Center'].apply(get_file_name)
+    data['Left'] = data['Left'].apply(get_file_name)
+    data['Right'] = data['Right'].apply(get_file_name)
     return data
 
 
@@ -30,7 +32,7 @@ def get_balance_data(data,
                      display: bool = True):
     n_bins = 31
     # Bin Cutoff value
-    n_samples = 1000
+    n_samples = 2500
     hist, bins = np.histogram(data['Steering'], n_bins)
     if display:
         center = (bins[:-1] + bins[1:]) * 0.5
@@ -50,9 +52,7 @@ def get_balance_data(data,
         # Split random samples according to cut off value
         bin_data_list = bin_data_list[n_samples:]
         removed_data_list.extend(bin_data_list)
-    print('Removed data len: ', len(removed_data_list))
     data.drop(data.index[removed_data_list], inplace=True)
-    print('Remaining data len: ', len(data))
     if display:
         hist, _ = np.histogram(data['Steering'], n_bins)
         center = (bins[:-1] + bins[1:]) * 0.5
@@ -61,5 +61,7 @@ def get_balance_data(data,
         plt.bar(center, hist, width=0.06)
         plt.plot(y_range, x_range)
         plt.show()
+        print('Removed data len: ', len(removed_data_list))
+        print('Remaining data len: ', len(data))
 
     return data
