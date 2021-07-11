@@ -79,16 +79,18 @@ $ sudo apt-get install -y --no-install-recommends libnvinfer7=7.1.3-1+cuda11.0 \
 
 ```shell
 # Add Soft link to libcusolver
-$ cd /usr/local/cuda/lib64; sudo ln -s $(pwd)/libcusolver.so.10  $(pwd)/libcusolver.so.11
+$ cd /usr/local/cuda/lib64
+$ sudo ln -s $(pwd)/libcusolver.so.10  $(pwd)/libcusolver.so.11
 ```
 
 ```shell
-# Set LD_LIBRARY_PATH
-$ export LD_LIBRARY=$(pwd)
+# Set LD_LIBRARY_PATH to ~/.bashrc
+$ cd /usr/local/cuda/lib64
+$ echo 'export LD_LIBRARY=$(pwd)' >> ~/.bashrc
 ```
 
-Pycharm LD_LIBRARY
-Setup [Stackoverflow #33812902](https://stackoverflow.com/questions/33812902/pycharm-cannot-find-library)
+Pycharm LD_LIBRARY Setup 
+[Stackoverflow #33812902](https://stackoverflow.com/questions/33812902/pycharm-cannot-find-library)
 
 ### Tensorflow Installation
 
