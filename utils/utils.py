@@ -1,12 +1,21 @@
 try:
+    import os
     import pandas as pd
     import numpy as np
     import matplotlib
 
     matplotlib.use('TkAgg')
+
     import matplotlib.pyplot as plt
+    import matplotlib.image as mp_img
     from sklearn.utils import shuffle
-    import os
+    from imgaug import augmenters as aug
+    from cv2 import cv2
+
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.optimizers import Adam
+    from tensorflow.keras.layers import Convolution2D, Flatten, Dense
+
 except ModuleNotFoundError:
     import sys
 
@@ -81,3 +90,59 @@ def load_data(path: str, data):
     steering_values = np.asarray(steering_values)
 
     return image_paths, steering_values
+
+
+def read_img(img_path):
+    return mp_img.imread(img_path)
+
+
+def augment_image(img_path, steering):
+    img = read_img(img_path)
+    # PAN augmentation
+    if np.random.rand() < 0.5:
+        pan = aug.Affine(translate_percent={'x': (-0.1, 0.1), 'y': (-0.1, 0.1)})
+        img = pan.augment_image(img)
+    # Zoom
+    if np.random.rand() < 0.5:
+        zoom = aug.Affine(scale=(1, 1.2))
+        img = zoom.augment_image(img)
+    # Brightness
+    if np.random.rand() < 0.5:
+        brightness = aug.Multiply((0.4, 1.2))
+        img = brightness.augment_image(img)
+    # Flip
+    if np.random.rand() < 0.5:
+        img = cv2.flip(img, 1)
+        steering = -steering
+
+    return img, steering
+
+
+def pre_process(img):
+    img = img[60:135, :, :]
+    img = cv2.resize(img, (200, 66))
+    img = cv2.cvtColor(img, cv2.COLOR_RGB2YUV)
+    img = cv2.GaussianBlur(img, (3, 3), 0)
+    img = img / 255  # Normalize the image
+    return img
+
+
+def create_model(learning_rate: float, loss_fn: str = 'mse'):
+    model = Sequential()
+
+    model.add(Convolution2D(24, (5, 5), (2, 2), input_shape=(66, 200, 3), activation='elu'))
+    model.add(Convolution2D(36, (5, 5), (2, 2), activation='elu'))
+    model.add(Convolution2D(48, (5, 5), (2, 2), activation='elu'))
+    model.add(Convolution2D(64, (3, 3), activation='elu'))
+    model.add(Convolution2D(64, (3, 3), activation='elu'))
+
+    model.add(Flatten())
+
+    model.add(Dense(100, activation='elu'))
+    model.add(Dense(50, activation='elu'))
+    model.add(Dense(10, activation='elu'))
+    model.add(Dense(1))
+
+    model.compile(Adam(learning_rate=learning_rate), loss=loss_fn)
+
+    return model
