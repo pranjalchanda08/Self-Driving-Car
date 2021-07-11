@@ -65,3 +65,16 @@ def get_balance_data(data,
         print('Remaining data len: ', len(data))
 
     return data
+
+
+def load_data(path: str, data):
+    image_paths = []
+    steering_values = []
+    for i in range(len(data)):
+        i_data = data.iloc[i]
+        image_paths.append(os.path.join(path, 'IMG', i_data[0]))  # Index 0 Corresponds to File name
+        steering_values.append(float(i_data[3]))  # Index 3 Corresponds to Steering angle value
+    image_paths = np.asarray(image_paths)
+    steering_values = np.asarray(steering_values)
+
+    return image_paths, steering_values
