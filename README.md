@@ -12,6 +12,41 @@ This repository is used to emphasize UDACITY self-driving car dataset.
 * SkLearn
 * Imgaug
 
+## Model
+
+The CNN Model used here is being proposed by NVIDIA for self-driving Cars
+
+![CNN](Output/CNN_moedel.png)
+
+```text
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 31, 98, 24)        1824      
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 14, 47, 36)        21636     
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 5, 22, 48)         43248     
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 3, 20, 64)         27712     
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 1, 18, 64)         36928     
+_________________________________________________________________
+flatten (Flatten)            (None, 1152)              0         
+_________________________________________________________________
+dense (Dense)                (None, 100)               115300    
+_________________________________________________________________
+dense_1 (Dense)              (None, 50)                5050      
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                510       
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 11        
+=================================================================
+Total params: 252,219
+Trainable params: 252,219
+Non-trainable params: 0
+```
 ## Tensorflow Installation (GPU)
 
 ### System Info
@@ -147,6 +182,14 @@ coreClock: 1.493GHz coreCount: 5 deviceMemorySize: 3.95GiB deviceMemoryBandwidth
 
 Used Dataset found on [Kaggle](https://www.kaggle.com/zaynena/selfdriving-car-simulator)
 Download the dataset and unzip it at the root folder 
+
+## Training
+
+Use [train.ipynb](train.ipynb) to train the model.
+
+![Training](Output/Model_training.png)
+
+![Graph](Output/training_results.png)
 
 ## Reference
 
