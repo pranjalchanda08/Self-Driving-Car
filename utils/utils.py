@@ -127,22 +127,22 @@ def pre_process(img):
     return img
 
 
-def create_model(learning_rate: float, loss_fn: str = 'mse'):
+def create_model(params):
     model = Sequential()
 
-    model.add(Convolution2D(24, (5, 5), (2, 2), input_shape=(66, 200, 3), activation='elu'))
-    model.add(Convolution2D(36, (5, 5), (2, 2), activation='elu'))
-    model.add(Convolution2D(48, (5, 5), (2, 2), activation='elu'))
-    model.add(Convolution2D(64, (3, 3), activation='elu'))
-    model.add(Convolution2D(64, (3, 3), activation='elu'))
+    model.add(Convolution2D(24, (5, 5), (2, 2), input_shape=(66, 200, 3), activation=params['activation']))
+    model.add(Convolution2D(36, (5, 5), (2, 2), activation=params['activation']))
+    model.add(Convolution2D(48, (5, 5), (2, 2), activation=params['activation']))
+    model.add(Convolution2D(64, (3, 3), activation=params['activation']))
+    model.add(Convolution2D(64, (3, 3), activation=params['activation']))
 
     model.add(Flatten())
 
-    model.add(Dense(100, activation='elu'))
-    model.add(Dense(50, activation='elu'))
-    model.add(Dense(10, activation='elu'))
+    model.add(Dense(100, activation=params['activation']))
+    model.add(Dense(50, activation=params['activation']))
+    model.add(Dense(10, activation=params['activation']))
     model.add(Dense(1))
 
-    model.compile(Adam(learning_rate=learning_rate), loss=loss_fn)
+    model.compile(Adam(learning_rate=params['learning_rate']), loss=params['loss_fn'])
 
     return model
