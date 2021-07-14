@@ -4,13 +4,23 @@ This repository is used to emphasize UDACITY self-driving car dataset.
 
 ## Library dependency
 
-* Tensorflow (GPU)
-* OpenCV
-* Numpy
-* Pandas
-* Matplotlib
-* SkLearn
-* Imgaug
+* tensorflow~=2.5.0
+* opencv-python~=4.5.2.54
+* numpy~=1.19.5
+* sklearn~=0.0
+* matplotlib~=3.4.2
+
+* pandas~=1.3.0
+* scikit-learn~=0.24.2
+* imgaug~=0.4.0
+* python-engineio=3.13.2
+* eventlet~=0.31.1
+* Pillow~=8.3.1
+* Flask~=2.0.1
+
+```shell
+$ pip3 install -r requirements.txt
+```
 
 ## Model
 
@@ -47,6 +57,7 @@ Total params: 252,219
 Trainable params: 252,219
 Non-trainable params: 0
 ```
+
 ## Tensorflow Installation (GPU)
 
 ### System Info
@@ -146,7 +157,7 @@ $ cd /usr/local/cuda/lib64
 $ echo 'export LD_LIBRARY=$(pwd)' >> ~/.bashrc
 ```
 
-Pycharm LD_LIBRARY Setup 
+Pycharm LD_LIBRARY Setup
 [Stackoverflow #33812902](https://stackoverflow.com/questions/33812902/pycharm-cannot-find-library)
 
 ### Tensorflow Installation
@@ -181,7 +192,7 @@ coreClock: 1.493GHz coreCount: 5 deviceMemorySize: 3.95GiB deviceMemoryBandwidth
 ## Dataset
 
 Used Dataset found on [Kaggle](https://www.kaggle.com/zaynena/selfdriving-car-simulator)
-Download the dataset and unzip it at the root folder 
+Download the dataset and unzip it at the root folder
 
 ## Training
 
