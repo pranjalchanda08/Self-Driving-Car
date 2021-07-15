@@ -4,19 +4,21 @@ This repository is used to emphasize UDACITY self-driving car dataset.
 
 ## Library dependency
 
-* tensorflow~=2.5.0
-* opencv-python~=4.5.2.54
-* numpy~=1.19.5
-* sklearn~=0.0
-* matplotlib~=3.4.2
+<img alt="Ubuntu" src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" /><img alt="nVIDIA" src="https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white"/><img alt="TensorFlow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" /><img alt="Keras" src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white"/><img alt="NumPy" src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white" /><img alt="Pandas" src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" />
+<img alt="Jupyter" src="https://img.shields.io/badge/Jupyter-%23F37626.svg?style=for-the-badge&logo=Jupyter&logoColor=white" /><img alt="Python" src="https://img.shields.io/badge/python-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white"/><img alt="Flask" src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/><img alt="OpenCV" src="https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white"/>
 
-* pandas~=1.3.0
-* scikit-learn~=0.24.2
-* imgaug~=0.4.0
+* tensorflow=2.5.0
+* opencv-python=4.5.2.54
+* numpy=1.19.5
+* sklearn=0.0
+* matplotlib=3.4.2
+* pandas=1.3.0
+* scikit-learn=0.24.2
+* imgaug=0.4.0
 * python-engineio=3.13.2
-* eventlet~=0.31.1
-* Pillow~=8.3.1
-* Flask~=2.0.1
+* eventlet=0.31.1
+* Pillow=8.3.1
+* Flask=2.0.1
 
 ```shell
 $ pip3 install -r requirements.txt
@@ -81,7 +83,7 @@ Self-driving-car
 |__ dataset
 |      |__ driving_log.csv
 |      |__ IMG
-|            |__ ....jpg
+|_________|__ ....jpg
 ```
 
 ### NVIDIA GPU Installation
@@ -126,7 +128,6 @@ $ nvidia-smi
 | N/A   42C    P8    N/A /  N/A |     11MiB /  4042MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
-                                                                               
 +-----------------------------------------------------------------------------+
 | Processes:                                                                  |
 |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
@@ -205,3 +206,5 @@ Use [train.ipynb](train.ipynb) to train the model.
 ## Reference
 
 [Tensorflow-GPU](https://www.tensorflow.org/install/gpu#linux_setup)
+[NVIDIA-Research-Paper](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf)
+[Udacity-car-sim](https://github.com/udacity/self-driving-car-sim)
