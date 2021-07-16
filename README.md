@@ -203,8 +203,12 @@ Use [train.ipynb](train.ipynb) to train the model.
 
 ![Graph](Output/training_results.png)
 
+Complete Training can be followed at: [Kaggle/pranjalchanda/udacity-sdc-train](https://www.kaggle.com/pranjalchanda/udacity-sdc-train)
+
 ## Reference
 
 [Tensorflow-GPU](https://www.tensorflow.org/install/gpu#linux_setup)
+
 [NVIDIA-Research-Paper](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf)
+
 [Udacity-car-sim](https://github.com/udacity/self-driving-car-sim)
